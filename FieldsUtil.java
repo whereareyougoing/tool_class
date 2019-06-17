@@ -16,7 +16,7 @@ import java.lang.reflect.Field;
  * 获取属性名，生成toString方法
  *
  */
-public class PropertiesUtil {
+public class FieldsUtil {
 
     public static StringBuilder getPropertyName(Class clazz){
 
