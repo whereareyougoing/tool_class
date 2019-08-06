@@ -1,98 +1,64 @@
-package com.jd.jr.marketing.platform.service;
+package com.jd.jr.baitiao.marketing.exchange.manage.util;
 
-import com.jd.jr.marketing.platform.api.activity.dto.*;
-import com.jd.jr.marketing.platform.api.apply.dto.ActivityApplyInfoDto;
-import com.jd.jr.marketing.platform.api.apply.dto.rich.PermissionDto;
-import com.jd.jr.marketing.platform.api.user.dto.OrganizationDto;
-import com.jd.jr.marketing.platform.api.user.dto.UserOrganizationMappingDto;
+import com.jd.jr.baitiao.marketing.exchange.manage.domain.vo.ExchangeDefaultActivity;
 
 import java.lang.reflect.Field;
 
 /**
  * @author 宋艾衡
- * @date 2019/5/20 14:05
+ * @date 2019/6/6 18:18
  * @desc
- *
- * 获取属性名，生成toString方法
- *
  */
 public class FieldsUtil {
 
-    public static StringBuilder getPropertyName(Class clazz){
+    public static <T> StringBuilder get(Class<T> clazz){
 
         StringBuilder sb = new StringBuilder();
 
-        String className = clazz.getSimpleName();
-        sb.append("\""+className+"={\"" + "+");
-
         Field[] fields = clazz.getDeclaredFields();
         for (Field field : fields) {
-            String fieldName = field.getName();
-            if (field.getGenericType().getTypeName().equalsIgnoreCase("java.lang.String")){
-                sb.append("\","+fieldName+"='\""+"+"+fieldName+"+"+"'"+"\\'"+"'"+"+");
-            }else {
-                sb.append("\","+fieldName+"=\""+"+"+fieldName+"+");
-            }
+            String name = field.getName();
+            sb.append(name);
+            sb.append("  ");
         }
-
-        sb.append("\""+"}"+"\""+";");
 
         return sb;
     }
 
-    public static void print(Class clazz){
-        String className = clazz.getSimpleName();
-        System.out.println("\""+className+"={\"" + "+");
-
+    public static <T> List<String> getAsJson(Class<T> clazz){
         Field[] fields = clazz.getDeclaredFields();
-        for (int i = 0;i<fields.length;i++) {
-            String fieldName = fields[i].getName();
-            if (i == 0){
-                if (fields[i].getGenericType().getTypeName().equalsIgnoreCase("java.lang.String")){
-                    System.out.println("\""+fieldName+"='\""+"+"+fieldName+"+"+"'"+"\\'"+"'"+"+");
-                }else {
-                    System.out.println("\""+fieldName+"=\""+"+"+fieldName+"+");
-                }
+        List<String> list = new ArrayList<>();
+        for (Field field : fields) {
+            if (field.getGenericType().toString().equals("class java.lang.String")){
+                String json = "\""+field.getName()+"\""+":"+"\"\""+",";
+                list.add(json);
+            }else if (field.getGenericType().toString().equals("class java.util.Date")){
+                String json = "\""+field.getName()+"\""+":"+"1559054890000"+",";
+                list.add(json);
             }else {
-                if (fields[i].getGenericType().getTypeName().equalsIgnoreCase("java.lang.String")){
-                    System.out.println("\","+fieldName+"='\""+"+"+fieldName+"+"+"'"+"\\'"+"'"+"+");
-                }else {
-                    System.out.println("\","+fieldName+"=\""+"+"+fieldName+"+");
-                }
+                String json = "\""+field.getName()+"\""+":"+"null"+",";
+                list.add(json);
             }
-
         }
-
-        System.out.println("\""+"}"+"\""+";");
+        return list;
     }
+
+    public static <T> void print(Class<T> clazz){
+        for (String s : getAsJson(clazz)) {
+            System.out.println(s);
+        }
+    }
+
 
     public static void main(String[] args) {
+//        StringBuilder sb = get(ActivityExchangeCouponSyncTask.class);
+//        System.out.println(sb);
 
-//        StringBuilder sb1 = getPropertyName(ActivityDto.class);
-//        System.out.println(sb1.toString());
-//
-//        StringBuilder sb2 = getPropertyName(RuleDto.class);
-//        System.out.println(sb2.toString());
-//
-//        StringBuilder sb3 = getPropertyName(OrganizationDto.class);
-//        System.out.println(sb3.toString());
-//
-//        StringBuilder sb4 = getPropertyName(UserOrganizationMappingDto.class);
-//        System.out.println(sb4.toString());
+//        StringBuilder sb = get(Rule.class);
+//        System.out.println(sb);
 
-//        print(ActivityDto.class);
-//        print(ActivityApplyInfoDto.class);
-//        print(SettlementActivityInvestorDto.class);
-//        print(RuleDto.class);
-//        print(OrganizationDto.class);
-        print(UserOrganizationMappingDto.class);
-//        print(PermissionDto.class);
-//        print(ActivityAlarmCfgDto.class);
-//        print(ActivityLogDto.class);
-//        print(ActivityRuleDto.class);
-//        print(ActivityRuleEnumDto.class);
-//        print(BenefitDto.class);
-//        print(ActivityRulePackageDto.class);
-
+        StringBuilder sb = get(ExchangeDefaultActivity.class);
+        System.out.println(sb);
     }
+
 }
