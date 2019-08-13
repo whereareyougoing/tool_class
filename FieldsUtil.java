@@ -30,13 +30,22 @@ public class FieldsUtil {
         List<String> list = new ArrayList<>();
         for (Field field : fields) {
             if (field.getGenericType().toString().equals("class java.lang.String")){
-                String json = "\""+field.getName()+"\""+":"+"\"\""+",";
+                String json = "\""+field.getName()+"\""+":"+" \"123\""+",";
                 list.add(json);
             }else if (field.getGenericType().toString().equals("class java.util.Date")){
-                String json = "\""+field.getName()+"\""+":"+"1559054890000"+",";
+                String json = "\""+field.getName()+"\""+":"+" 1559054890000"+",";
                 list.add(json);
-            }else {
-                String json = "\""+field.getName()+"\""+":"+"null"+",";
+            }else if (field.getGenericType().toString().equals("class java.math.BigDecimal")){
+                String json = "\""+field.getName()+"\""+":"+" 1"+",";
+                list.add(json);
+            }else if (field.getGenericType().toString().equals("class java.lang.Integer")){
+                String json = "\""+field.getName()+"\""+":"+" 1"+",";
+                list.add(json);
+            } else if (field.getGenericType().toString().equals("class java.lang.Boolean")){
+                String json = "\""+field.getName()+"\""+":"+" true"+",";
+                list.add(json);
+            } else {
+                String json = "\""+field.getName()+"\""+":"+" null"+",";
                 list.add(json);
             }
         }
