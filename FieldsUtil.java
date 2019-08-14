@@ -44,6 +44,12 @@ public class FieldsUtil {
             } else if (field.getGenericType().toString().equals("class java.lang.Boolean")){
                 String json = "\""+field.getName()+"\""+":"+" true"+",";
                 list.add(json);
+            } else if (field.getGenericType().toString().equals("class java.lang.Byte")){
+                String json = "\""+field.getName()+"\""+":"+" 1"+",";
+                list.add(json);
+            } else if (field.getGenericType().toString().equals("class java.lang.Long")){
+                String json = "\""+field.getName()+"\""+":"+" 1739054011948"+",";
+                list.add(json);
             } else {
                 String json = "\""+field.getName()+"\""+":"+" null"+",";
                 list.add(json);
