@@ -53,10 +53,25 @@ public class GetSetUtil {
                 String set = className+"."+"set"+fieldName.getKey().substring(0,1).toUpperCase()+fieldName.getKey().substring(1)+"(true);";
                 methodNames.add(set);
             } else if (fieldName.getValue().equals("class java.lang.Byte")) {
-                String set = className+"."+"set"+fieldName.getKey().substring(0,1).toUpperCase()+fieldName.getKey().substring(1)+"(1);";
+                String set = className+"."+"set"+fieldName.getKey().substring(0,1).toUpperCase()+fieldName.getKey().substring(1)+"((Byte)1);";
                 methodNames.add(set);
             } else if (fieldName.getValue().equals("class java.lang.Long")) {
                 String set = className+"."+"set"+fieldName.getKey().substring(0,1).toUpperCase()+fieldName.getKey().substring(1)+"(1739054011948L);";
+                methodNames.add(set);
+            } else if (fieldName.getValue().equals("int")) {
+                String set = className+"."+"set"+fieldName.getKey().substring(0,1).toUpperCase()+fieldName.getKey().substring(1)+"(1);";
+                methodNames.add(set);
+            } else if (fieldName.getValue().equals("long")) {
+                String set = className+"."+"set"+fieldName.getKey().substring(0,1).toUpperCase()+fieldName.getKey().substring(1)+"(1739054011948L);";
+                methodNames.add(set);
+            } else if (fieldName.getValue().equals("boolean")) {
+                String set = className+"."+"set"+fieldName.getKey().substring(0,1).toUpperCase()+fieldName.getKey().substring(1)+"(true);";
+                methodNames.add(set);
+            } else if (fieldName.getValue().equals("double")) {
+                String set = className+"."+"set"+fieldName.getKey().substring(0,1).toUpperCase()+fieldName.getKey().substring(1)+"(1.0);";
+                methodNames.add(set);
+            } else {
+                String set = className+"."+"set"+fieldName.getKey().substring(0,1).toUpperCase()+fieldName.getKey().substring(1)+"(null);";
                 methodNames.add(set);
             }
 
