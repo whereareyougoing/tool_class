@@ -15,6 +15,8 @@ import java.lang.reflect.Field;
  *
  * 获取属性名，生成toString方法
  *
+ * idea有生成tostring的工具，可以直接使用idea的tostring工具
+ *
  */
 public class ToStringUtil {
 
