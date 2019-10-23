@@ -22,8 +22,12 @@ public class BaseQuery implements Serializable {
      */
     private String jrid;
 
-    public BaseQuery(String merchantCode, String jrid) {
-        this.merchantCode = merchantCode;
-        this.jrid = jrid;
+
+    @Override
+    public String toString() {
+        return
+                "                        \"merchantCode\":\"" + merchantCode + "\""
+                + ",                         \"jrid\":\"" + jrid + "\""
+                ;
     }
 }

@@ -16,19 +16,17 @@ public class UserQuery extends BaseQuery implements Serializable {
 
     private String chanele;
 
-    public UserQuery(String merchantCode,String jrid,String chanele) {
-        super(merchantCode,jrid);
-        this.chanele = chanele;
+    public UserQuery() {
+        super();
     }
 
     @Override
     public String toString() {
         return "{"
-                + "\"merchantCode\":\"" + super.getMerchantCode()
+                + super.toString()
                 + "                        \"chanele\":\"" + chanele + "\""
                 + "}";
     }
-
 
     public static void main(String[] args) {
         UserQuery userQuery = new UserQuery("1", "2", "3");
