@@ -2,7 +2,6 @@ package com.jd.jr.treasure.bussiness.export.xjk.response;
 
 import com.alibaba.fastjson.JSON;
 import com.jd.jr.treasure.bussiness.common.ServerResult;
-import com.jd.jr.treasure.bussiness.export.xjk.vo.TradeDetailVo;
 import com.jd.jr.treasure.bussiness.export.xjk.vo.UserHoldGoodsVo;
 import com.jd.jr.treasure.bussiness.export.xjk.vo.UserHoldVo;
 
