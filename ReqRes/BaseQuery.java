@@ -25,9 +25,9 @@ public class BaseQuery implements Serializable {
 
     @Override
     public String toString() {
-        return
+        return  ""
                 "                        \"merchantCode\":\"" + merchantCode + "\""
                 + ",                         \"jrid\":\"" + jrid + "\""
-                ;
+                + "";
     }
 }
